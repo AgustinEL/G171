@@ -1,0 +1,126 @@
+Git:
+1-Lo primero es hacer click derecho en la carpeta que deseamos gestionar con GIT y abrir con bash e ir ejecutando lo siguiente:
+ls
+pwd
+git status
+git init
+git config --global user.name "su_nombre"
+git config --global user.email "su_correo@gmail.com"
+git log
+git status
+git add pagina1.html
+git add file.css
+git status -s
+git rm --cache file.css
+git status -s
+git commit -m "mi primer commit"
+git log
+git status -s
+
+git add .
+git commit -m "mi 2º commit -agrega todo"
+
+Ahora modifiquemos alguno de los archivos comiteados y luego ejecutar:
+git add .
+git status -s
+
+suponiendo que la modificacion rompio algo y debemos volver atras hacemos lo siguiente:
+git log --oneline
+
+git reset --hard +"codigo de commit al que queremos ir"
+
+luego podemos volver al ultimo comit de la sguiente manera:
+git log --oneline
+git reset --hard +"codigo de commit al que queremos ir"
+
+subirlo a github:
+git remote add origin https://github.com/AgustinEL/repositoriodeprueba.git
+git remote -v   //muestra si estan cargados los destinos 
+
+git push origin master     //enviamos a github
+
+Realizamos cambios locales y volvemos a hacer un comit y enviamos y un push:
+git status -s
+git add .
+git status -s
+git commit -am "comit ya vinculado a github"
+git push
+
+
+
+Actualizar infor desde github a nuestro proyecto:
+
+Desde nuestra cuenta github crearemos un nuevo archivo y cargaremos contenido
+Luego haremos un pull:
+
+git fetch
+git pull
+
+(puede que si nos movimos entre commits y se actualicen archivos no veamos los cambios, para esto git reset --hard origin/master)
+
+Luego crearemos tags para las versiones:
+
+git tag version1.0 -m  "version1.0"
+git log --oneline
+
+subimos el tag:
+git push --tag
+
+Luego de esto ya queda cargada la version del codigo lista para descargar
+
+
+Ahora crearemos una nueva rama en nuestro proyecto luego de introducir cambios en nuestros archivos
+git branch rama_Develop
+git push -u origin rama_Develop
+git checkout rama_Develop
+
+git branch      //marca las ramas existentes y en cual estamos posicionados
+git add .  //agregamos los cambios en el espacio de trabajo de la rama pero no en la master
+git commit -m "commit de rama"
+git log --oneline
+
+
+Fusionar la master con la rama:
+Volvemos a la master:
+
+git checkout master
+git branch 
+git merge rama_Develop
+
+Una vez que los datos de las ramas ya se unieron a la master se pueden eliminar:
+
+git branch -d ramaDevelop   //se elimina la rama
+
+
+Que pasa si la rama  y la master tienen cambios y se realiza un merge???(vamos a probar)
+
+git branch ramaNueva
+git checkout ramaNueva   //realizamos cambios en los archivos y luego commiteamos
+
+git add .
+git commit -m "commit rama"
+
+cambiamos a master y agregamos cambios ahí:
+
+git checkout master     //hacemos los cambios
+git add .
+git commit -m "commit master"
+
+git merge ramaNueva
+Se produce un conflicto ya que la union no sabe si adjuntar ambos cambio o con el de la master o la rama.
+Se selecciona el cambio que guardaremos y luego hacemos un git add y commit
+
+git status -s
+git add .
+git commit -m "commit master"
+
+
+clone:
+git remote add origin https://github.com/AgustinEL/Clase_github.git
+
+
+tutorial 1: https://www.youtube.com/watch?v=hWglK8nWh60
+tutorial 2: https://www.youtube.com/watch?v=GG4mftkQVrs
+tutorial 3: https://www.youtube.com/watch?v=tFr0Vg1q9Eg
+
+https://bluuweb.github.io/tutorial-github/01-fundamentos/#¿que-es-git
